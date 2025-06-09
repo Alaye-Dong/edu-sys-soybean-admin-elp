@@ -3,7 +3,7 @@ defineOptions({ name: 'SystemLogo' });
 </script>
 
 <template>
-  <icon-local-logo />
+  <icon-carbon:ibm-cloud-for-education />
 </template>
 
 <style scoped></style>
