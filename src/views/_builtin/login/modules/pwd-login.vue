@@ -18,7 +18,7 @@ interface FormModel {
 }
 
 const model = ref<FormModel>({
-  userName: 'Soybean',
+  userName: 'admin',
   password: '123456'
 });
 
