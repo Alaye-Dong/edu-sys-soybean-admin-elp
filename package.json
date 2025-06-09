@@ -114,9 +114,7 @@
     "eslint": "9.21.0",
     "eslint-plugin-vue": "10.0.0",
     "kolorist": "1.8.0",
-    "lint-staged": "15.5.0",
     "sass": "1.85.1",
-    "simple-git-hooks": "2.11.1",
     "tsx": "4.19.3",
     "typescript": "5.8.2",
     "unplugin-icons": "22.1.0",
@@ -127,9 +125,6 @@
     "vite-plugin-vue-devtools": "7.7.2",
     "vue-eslint-parser": "10.1.1",
     "vue-tsc": "2.2.8"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
   },
   "website": "https://elp.soybeanjs.cn"
 }
