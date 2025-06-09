@@ -8,7 +8,7 @@ import { request } from '../request';
  */
 export function fetchLogin(username: string, password: string) {
   return request<Api.Auth.LoginToken>({
-    url: '/user/login',
+    url: '/auth/login',
     method: 'post',
     data: {
       username,
