@@ -2,10 +2,10 @@
 import { ElButton, ElPopconfirm, ElTag } from 'element-plus';
 import { fetchGetStudentList } from '@/service/api';
 import { $t } from '@/locales';
-import { enableStatusRecord, userGenderRecord } from '@/constants/business';
+import { enableStatusRecord, studentGenderRecord } from '@/constants/business';
 import { useTable, useTableOperate } from '@/hooks/common/table';
 import UserOperateDrawer from './modules/student-operate-drawer.vue';
-import UserSearch from './modules/student-search.vue';
+import StudentSearch from './modules/student-search.vue';
 
 defineOptions({ name: 'StudentManage' });
 
@@ -35,25 +35,25 @@ const {
     { type: 'selection', width: 48 },
     { prop: 'index', label: $t('common.index'), width: 64 },
     { prop: 'name', label: $t('page.manage.user.userName'), minWidth: 100 },
-    // {
-    //   prop: 'genderCode',
-    //   label: $t('page.manage.user.userGender'),
-    //   width: 100,
-    //   formatter: row => {
-    //     if (row.genderCode === undefined) {
-    //       return '';
-    //     }
+    {
+      prop: 'genderCode',
+      label: $t('page.manage.user.userGender'),
+      width: 100,
+      formatter: row => {
+        if (row.genderCode === undefined) {
+          return '';
+        }
 
-    //     const tagMap: Record<Api.SystemManage.UserGender, UI.ThemeColor> = {
-    //       1: 'primary',
-    //       2: 'danger'
-    //     };
+        const tagMap: Record<Api.StudentManage.StudentGender, UI.ThemeColor> = {
+          1: 'primary',
+          2: 'danger'
+        };
 
-    //     const label = $t(userGenderRecord[row.userGender]);
+        const label = $t(studentGenderRecord[row.genderCode]);
 
-    //     return <ElTag type={tagMap[row.userGender]}>{label}</ElTag>;
-    //   }
-    // },
+        return <ElTag type={tagMap[row.genderCode]}>{label}</ElTag>;
+      }
+    },
     { prop: 'nickName', label: $t('page.manage.user.nickName'), minWidth: 100 },
     { prop: 'phone', label: $t('page.manage.user.userPhone'), width: 120 },
     { prop: 'userEmail', label: $t('page.manage.user.userEmail'), minWidth: 200 },

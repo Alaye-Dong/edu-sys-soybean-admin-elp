@@ -48,7 +48,7 @@ function createDefaultModel(): Model {
   return {
     studentNumber:  '',
     name: '',
-    genderCode: '',
+    genderCode: undefined,
     className: '',
     phone: '',
     email: '',

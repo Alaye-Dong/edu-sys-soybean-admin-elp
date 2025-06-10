@@ -1,11 +1,12 @@
 declare namespace Api {
   namespace StudentManage {
     type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'current' | 'size'>;
+    type StudentGender = '1' | '2';
     type Student = Common.CommonRecord<{
       age: number;
       className: string;
       email: string;
-      genderCode: string;
+      genderCode: StudentGender | undefined;
       name: string;
       phone: string;
       studentNumber: string;
