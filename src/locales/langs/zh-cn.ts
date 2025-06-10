@@ -227,7 +227,8 @@ const local: App.I18n.Schema = {
     plugin_gantt_vtable: 'VTableGantt',
     plugin_typeit: '打字机',
     plugin_tables: '表格',
-    plugin_tables_vtable: 'VTable'
+    plugin_tables_vtable: 'VTable',
+    'student-manage': '学生管理',
   },
   page: {
     login: {
@@ -487,7 +488,7 @@ const local: App.I18n.Schema = {
           iconify: 'iconify图标',
           local: '本地图标'
         }
-      }
+      },
     }
   },
   form: {
