@@ -21,3 +21,11 @@ export function fetchDeleteStudent(id:Api.StudentManage.Student['id']) {
     method: 'delete'
   });
 }
+
+export function fetchUpdateStudent(data: Api.StudentManage.StudentOperateParams) {
+  return request({
+    url: '/student',
+    method: 'put',
+    data
+  });
+}

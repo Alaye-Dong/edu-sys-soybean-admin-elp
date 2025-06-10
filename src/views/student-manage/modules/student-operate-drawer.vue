@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useForm, useFormRules } from '@/hooks/common/form';
-import { fetchCreateStudent } from '@/service/api';
+import { fetchCreateStudent,fetchUpdateStudent } from '@/service/api';
 import { $t } from '@/locales';
 import { enableStatusOptions, studentGenderOptions } from '@/constants/business';
 
@@ -80,8 +80,7 @@ async function handleSubmit() {
     await fetchCreateStudent(model.value);
   }
   if (props.operateType === 'edit') {
-    // TODO 改
-    console.log('edit');
+    await fetchUpdateStudent(model.value);
     window.$message?.success($t('common.updateSuccess'));
   }
 
