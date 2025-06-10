@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue';
 import { useForm, useFormRules } from '@/hooks/common/form';
 import { fetchGetAllRoles } from '@/service/api';
 import { $t } from '@/locales';
-import { enableStatusOptions, userGenderOptions } from '@/constants/business';
+import { enableStatusOptions, studentGenderOptions } from '@/constants/business';
 
 defineOptions({ name: 'StdentOperateDrawer' });
 
@@ -95,9 +95,9 @@ watch(visible, () => {
       <ElFormItem :label="$t('page.manage.user.userName')" prop="name">
         <ElInput v-model="model.name" :placeholder="$t('page.manage.user.form.userName')" />
       </ElFormItem>
-      <ElFormItem :label="$t('page.manage.user.userGender')" prop="userGender">
+      <ElFormItem :label="$t('page.manage.user.userGender')" prop="genderCode">
         <ElRadioGroup v-model="model.genderCode">
-          <ElRadio v-for="item in userGenderOptions" :key="item.value" :value="item.value" :label="$t(item.label)" />
+          <ElRadio v-for="item in studentGenderOptions" :key="item.value" :value="item.value" :label="$t(item.label)" />
         </ElRadioGroup>
       </ElFormItem>
       <ElFormItem :label="$t('page.manage.user.nickName')" prop="studentNumber">

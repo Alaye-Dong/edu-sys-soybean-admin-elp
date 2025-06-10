@@ -34,7 +34,8 @@ const {
   columns: () => [
     { type: 'selection', width: 48 },
     { prop: 'index', label: $t('common.index'), width: 64 },
-    { prop: 'name', label: $t('page.manage.user.userName'), minWidth: 100 },
+    { prop: 'name', label: '姓名', minWidth: 100 },
+    { prop: 'studentNumber', label: '学号', minWidth: 100 },
     {
       prop: 'genderCode',
       label: $t('page.manage.user.userGender'),
@@ -54,9 +55,9 @@ const {
         return <ElTag type={tagMap[row.genderCode]}>{label}</ElTag>;
       }
     },
-    { prop: 'nickName', label: $t('page.manage.user.nickName'), minWidth: 100 },
+    { prop: 'className', label: '班级名称', minWidth: 100 },
     { prop: 'phone', label: $t('page.manage.user.userPhone'), width: 120 },
-    { prop: 'userEmail', label: $t('page.manage.user.userEmail'), minWidth: 200 },
+    { prop: 'email', label: $t('page.manage.user.userEmail'), minWidth: 200 },
     {
       prop: 'operate',
       label: $t('common.operate'),
@@ -121,44 +122,22 @@ function edit(id: number) {
       <template #header>
         <div class="flex items-center justify-between">
           <p>{{ $t('page.manage.user.title') }}</p>
-          <TableHeaderOperation
-            v-model:columns="columnChecks"
-            :disabled-delete="checkedRowKeys.length === 0"
-            :loading="loading"
-            @add="handleAdd"
-            @delete="handleBatchDelete"
-            @refresh="getData"
-          />
+          <TableHeaderOperation v-model:columns="columnChecks" :disabled-delete="checkedRowKeys.length === 0"
+            :loading="loading" @add="handleAdd" @delete="handleBatchDelete" @refresh="getData" />
         </div>
       </template>
       <div class="h-[calc(100%-50px)]">
-        <ElTable
-          v-loading="loading"
-          height="100%"
-          border
-          class="sm:h-full"
-          :data="data"
-          row-key="id"
-          @selection-change="checkedRowKeys = $event"
-        >
+        <ElTable v-loading="loading" height="100%" border class="sm:h-full" :data="data" row-key="id"
+          @selection-change="checkedRowKeys = $event">
           <ElTableColumn v-for="col in columns" :key="col.prop" v-bind="col" />
         </ElTable>
       </div>
       <div class="mt-20px flex justify-end">
-        <ElPagination
-          v-if="mobilePagination.total"
-          layout="total,prev,pager,next,sizes"
-          v-bind="mobilePagination"
-          @current-change="mobilePagination['current-change']"
-          @size-change="mobilePagination['size-change']"
-        />
+        <ElPagination v-if="mobilePagination.total" layout="total,prev,pager,next,sizes" v-bind="mobilePagination"
+          @current-change="mobilePagination['current-change']" @size-change="mobilePagination['size-change']" />
       </div>
-      <UserOperateDrawer
-        v-model:visible="drawerVisible"
-        :operate-type="operateType"
-        :row-data="editingData"
-        @submitted="getDataByPage"
-      />
+      <UserOperateDrawer v-model:visible="drawerVisible" :operate-type="operateType" :row-data="editingData"
+        @submitted="getDataByPage" />
     </ElCard>
   </div>
 </template>
