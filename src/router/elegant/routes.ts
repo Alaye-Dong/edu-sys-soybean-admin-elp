@@ -96,6 +96,16 @@ export const generatedRoutes: GeneratedRoute[] = [
     ]
   },
   {
+    name: 'course-manage',
+    path: '/course-manage',
+    component: 'layout.base$view.course-manage',
+    meta: {
+      title: 'course-manage',
+      i18nKey: 'route.course-manage',
+      icon: 'tdesign:course'
+    }
+  },
+  {
     name: 'function',
     path: '/function',
     component: 'layout.base',

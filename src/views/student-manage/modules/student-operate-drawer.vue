@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useForm, useFormRules } from '@/hooks/common/form';
-import { fetchCreateStudent,fetchUpdateStudent } from '@/service/api';
+import { fetchCreateStudent, fetchUpdateStudent } from '@/service/api';
 import { $t } from '@/locales';
 import { enableStatusOptions, studentGenderOptions } from '@/constants/business';
 
