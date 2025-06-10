@@ -47,35 +47,18 @@ async function search() {
         <ElForm ref="formRef" :model="model" :rules="rules" label-position="right" :label-width="80">
           <ElRow :gutter="24">
             <ElCol :lg="6" :md="8" :sm="12">
-              <ElFormItem :label="$t('page.manage.user.userName')" prop="name">
-                <ElInput v-model="model.name" :placeholder="$t('page.manage.user.form.userName')" />
-              </ElFormItem>
-            </ElCol>
-            <ElCol :lg="6" :md="8" :sm="12" :label="$t('page.manage.user.userGender')">
-              <ElFormItem :label="$t('page.manage.user.userGender')" prop="genderCode">
-                <ElSelect v-model="model.genderCode" clearable :placeholder="$t('page.manage.user.form.userGender')">
-                  <ElOption
-                    v-for="(item, idx) in translateOptions(userGenderOptions)"
-                    :key="idx"
-                    :label="item.label"
-                    :value="item.value"
-                  ></ElOption>
-                </ElSelect>
+              <ElFormItem :label="'姓名'" prop="name">
+                <ElInput v-model="model.name" :placeholder="'请输入姓名'" />
               </ElFormItem>
             </ElCol>
             <ElCol :lg="6" :md="8" :sm="12">
-              <ElFormItem :label="$t('page.manage.user.nickName')" prop="studentNumber">
-                <ElInput v-model="model.studentNumber" :placeholder="$t('page.manage.user.form.nickName')" />
+              <ElFormItem :label="'班级'" prop="className">
+                <ElInput v-model="model.className" :placeholder="'请输入班级'" />
               </ElFormItem>
             </ElCol>
             <ElCol :lg="6" :md="8" :sm="12">
-              <ElFormItem :label="$t('page.manage.user.userPhone')" prop="phone">
-                <ElInput v-model="model.phone" :placeholder="$t('page.manage.user.form.userPhone')" />
-              </ElFormItem>
-            </ElCol>
-            <ElCol :lg="6" :md="8" :sm="12">
-              <ElFormItem :label="$t('page.manage.user.userEmail')" prop="userEmail">
-                <ElInput v-model="model.email" :placeholder="$t('page.manage.user.form.userEmail')" />
+              <ElFormItem :label="'学号'" prop="studentNumber">
+                <ElInput v-model="model.studentNumber" :placeholder="'请输入学号'" />
               </ElFormItem>
             </ElCol>
             <ElCol :lg="12" :md="24" :sm="24">

@@ -14,7 +14,7 @@ declare namespace Api {
     type StudentList = Common.PaginatingQueryRecord<Student>;
 
     type StudentSearchParams = CommonType.RecordNullable<
-      Pick<Api.StudentManage.Student, 'name' | 'genderCode' | 'studentNumber' | 'phone' | 'email'> &
+      Pick<Api.StudentManage.Student, 'name' | 'genderCode' | 'studentNumber' | 'phone' | 'email' | 'className'> &
       CommonSearchParams
     >;
 
