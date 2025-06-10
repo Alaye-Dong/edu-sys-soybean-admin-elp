@@ -6,3 +6,11 @@ export function fetchGetStudentList(params?: Api.StudentManage.StudentSearchPara
     params
   });
 }
+
+export function fetchCreateStudent(data: Api.StudentManage.StudentOperateParams) {
+  return request({
+    url: '/student',
+    method: 'post',
+    data
+  });
+}

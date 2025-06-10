@@ -55,7 +55,7 @@ const {
         return <ElTag type={tagMap[row.genderCode]}>{label}</ElTag>;
       }
     },
-    { prop: 'className', label: '班级名称', minWidth: 100 },
+    { prop: 'className', label: '班级', minWidth: 100 },
     { prop: 'phone', label: $t('page.manage.user.userPhone'), width: 120 },
     { prop: 'email', label: $t('page.manage.user.userEmail'), minWidth: 200 },
     {
@@ -111,6 +111,7 @@ function handleDelete(id: number) {
 }
 
 function edit(id: number) {
+  console.log(id);
   handleEdit(id);
 }
 </script>
@@ -121,7 +122,7 @@ function edit(id: number) {
     <ElCard class="sm:flex-1-hidden card-wrapper" body-class="ht50">
       <template #header>
         <div class="flex items-center justify-between">
-          <p>{{ $t('page.manage.user.title') }}</p>
+          <p>学生列表</p>
           <TableHeaderOperation v-model:columns="columnChecks" :disabled-delete="checkedRowKeys.length === 0"
             :loading="loading" @add="handleAdd" @delete="handleBatchDelete" @refresh="getData" />
         </div>

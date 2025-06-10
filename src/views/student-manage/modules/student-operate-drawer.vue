@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useForm, useFormRules } from '@/hooks/common/form';
-import { fetchGetAllRoles } from '@/service/api';
+import { fetchCreateStudent } from '@/service/api';
 import { $t } from '@/locales';
 import { enableStatusOptions, studentGenderOptions } from '@/constants/business';
 
@@ -46,7 +46,7 @@ const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    studentNumber:  '',
+    studentNumber: '',
     name: '',
     genderCode: undefined,
     className: '',
@@ -76,7 +76,15 @@ function closeDrawer() {
 async function handleSubmit() {
   await validate();
   // request
-  window.$message?.success($t('common.updateSuccess'));
+  if (props.operateType === 'add') {
+    console.log('add');
+    await fetchCreateStudent(model.value);
+  }
+  if (props.operateType === 'edit') {
+    console.log('edit');
+    window.$message?.success($t('common.updateSuccess'));
+  }
+
   closeDrawer();
   emit('submitted');
 }
@@ -100,8 +108,11 @@ watch(visible, () => {
           <ElRadio v-for="item in studentGenderOptions" :key="item.value" :value="item.value" :label="$t(item.label)" />
         </ElRadioGroup>
       </ElFormItem>
-      <ElFormItem :label="$t('page.manage.user.nickName')" prop="studentNumber">
-        <ElInput v-model="model.studentNumber" :placeholder="$t('page.manage.user.form.nickName')" />
+      <ElFormItem :label="'学号'" prop="studentNumber">
+        <ElInput v-model="model.studentNumber" :placeholder="'请输入学号'" />
+      </ElFormItem>
+      <ElFormItem :label="'班级'" prop="className">
+        <ElInput v-model="model.className" :placeholder="'请输入班级'" />
       </ElFormItem>
       <ElFormItem :label="$t('page.manage.user.userPhone')" prop="phone">
         <ElInput v-model="model.phone" :placeholder="$t('page.manage.user.form.userPhone')" />

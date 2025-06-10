@@ -15,7 +15,9 @@ declare namespace Api {
 
     type StudentSearchParams = CommonType.RecordNullable<
       Pick<Api.StudentManage.Student, 'name' | 'genderCode' | 'studentNumber' | 'phone' | 'email'> &
-        CommonSearchParams
+      CommonSearchParams
     >;
+
+    type StudentOperateParams = Pick<Api.StudentManage.Student, 'name' | 'genderCode' | 'studentNumber' | 'phone' | 'email'>;
   }
 }
