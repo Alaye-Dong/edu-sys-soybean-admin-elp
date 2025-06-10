@@ -1,6 +1,6 @@
 <script setup lang="tsx">
 import { ElButton, ElPopconfirm, ElTag } from 'element-plus';
-import { fetchGetStudentList } from '@/service/api';
+import { fetchGetStudentList, fetchDeleteStudent } from '@/service/api';
 import { $t } from '@/locales';
 import { enableStatusRecord, studentGenderRecord } from '@/constants/business';
 import { useTable, useTableOperate } from '@/hooks/common/table';
@@ -102,10 +102,11 @@ async function handleBatchDelete() {
   onBatchDeleted();
 }
 
-function handleDelete(id: number) {
+async function handleDelete(id: number) {
   // eslint-disable-next-line no-console
   console.log(id);
   // request
+  await fetchDeleteStudent(id);
 
   onDeleted();
 }

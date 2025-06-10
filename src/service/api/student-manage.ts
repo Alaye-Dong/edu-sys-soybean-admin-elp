@@ -14,3 +14,10 @@ export function fetchCreateStudent(data: Api.StudentManage.StudentOperateParams)
     data
   });
 }
+
+export function fetchDeleteStudent(id:Api.StudentManage.Student['id']) {
+  return request({
+    url: `/student/${id}`,
+    method: 'delete'
+  });
+}

@@ -77,10 +77,10 @@ async function handleSubmit() {
   await validate();
   // request
   if (props.operateType === 'add') {
-    console.log('add');
     await fetchCreateStudent(model.value);
   }
   if (props.operateType === 'edit') {
+    // TODO 改
     console.log('edit');
     window.$message?.success($t('common.updateSuccess'));
   }
