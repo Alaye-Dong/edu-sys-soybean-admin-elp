@@ -17,67 +17,14 @@ declare module "@elegant-router/types" {
   export type RouteMap = {
     "root": "/";
     "not-found": "/:pathMatch(.*)*";
-    "exception": "/exception";
-    "exception_403": "/exception/403";
-    "exception_404": "/exception/404";
-    "exception_500": "/exception/500";
     "403": "/403";
     "404": "/404";
     "500": "/500";
     "about": "/about";
-    "alova": "/alova";
-    "alova_request": "/alova/request";
-    "alova_scenes": "/alova/scenes";
-    "alova_user": "/alova/user";
     "course-manage": "/course-manage";
-    "function": "/function";
-    "function_hide-child": "/function/hide-child";
-    "function_hide-child_one": "/function/hide-child/one";
-    "function_hide-child_three": "/function/hide-child/three";
-    "function_hide-child_two": "/function/hide-child/two";
-    "function_multi-tab": "/function/multi-tab";
-    "function_request": "/function/request";
-    "function_super-page": "/function/super-page";
-    "function_tab": "/function/tab";
-    "function_toggle-auth": "/function/toggle-auth";
     "home": "/home";
     "iframe-page": "/iframe-page/:url";
     "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?";
-    "manage": "/manage";
-    "manage_menu": "/manage/menu";
-    "manage_role": "/manage/role";
-    "manage_user": "/manage/user";
-    "manage_user-detail": "/manage/user-detail/:id";
-    "multi-menu": "/multi-menu";
-    "multi-menu_first": "/multi-menu/first";
-    "multi-menu_first_child": "/multi-menu/first/child";
-    "multi-menu_second": "/multi-menu/second";
-    "multi-menu_second_child": "/multi-menu/second/child";
-    "multi-menu_second_child_home": "/multi-menu/second/child/home";
-    "plugin": "/plugin";
-    "plugin_barcode": "/plugin/barcode";
-    "plugin_charts": "/plugin/charts";
-    "plugin_charts_antv": "/plugin/charts/antv";
-    "plugin_charts_echarts": "/plugin/charts/echarts";
-    "plugin_charts_vchart": "/plugin/charts/vchart";
-    "plugin_copy": "/plugin/copy";
-    "plugin_editor": "/plugin/editor";
-    "plugin_editor_markdown": "/plugin/editor/markdown";
-    "plugin_editor_quill": "/plugin/editor/quill";
-    "plugin_excel": "/plugin/excel";
-    "plugin_gantt": "/plugin/gantt";
-    "plugin_gantt_dhtmlx": "/plugin/gantt/dhtmlx";
-    "plugin_gantt_vtable": "/plugin/gantt/vtable";
-    "plugin_icon": "/plugin/icon";
-    "plugin_map": "/plugin/map";
-    "plugin_pdf": "/plugin/pdf";
-    "plugin_pinyin": "/plugin/pinyin";
-    "plugin_print": "/plugin/print";
-    "plugin_swiper": "/plugin/swiper";
-    "plugin_tables": "/plugin/tables";
-    "plugin_tables_vtable": "/plugin/tables/vtable";
-    "plugin_typeit": "/plugin/typeit";
-    "plugin_video": "/plugin/video";
     "student-course": "/student-course";
     "student-course_selection": "/student-course/selection";
     "student-manage": "/student-manage";
@@ -101,10 +48,6 @@ declare module "@elegant-router/types" {
     RouteKey,
     | "root"
     | "not-found"
-    | "exception"
-    | "exception_403"
-    | "exception_404"
-    | "exception_500"
   >;
 
   /**
@@ -121,15 +64,10 @@ declare module "@elegant-router/types" {
     | "404"
     | "500"
     | "about"
-    | "alova"
     | "course-manage"
-    | "function"
     | "home"
     | "iframe-page"
     | "login"
-    | "manage"
-    | "multi-menu"
-    | "plugin"
     | "student-course"
     | "student-manage"
     | "user-center"
@@ -142,7 +80,6 @@ declare module "@elegant-router/types" {
     CustomRouteKey,
     | "root"
     | "not-found"
-    | "exception"
   >;
 
   /**
@@ -156,44 +93,8 @@ declare module "@elegant-router/types" {
     | "iframe-page"
     | "login"
     | "about"
-    | "alova_request"
-    | "alova_scenes"
-    | "alova_user"
     | "course-manage"
-    | "function_hide-child_one"
-    | "function_hide-child_three"
-    | "function_hide-child_two"
-    | "function_multi-tab"
-    | "function_request"
-    | "function_super-page"
-    | "function_tab"
-    | "function_toggle-auth"
     | "home"
-    | "manage_menu"
-    | "manage_role"
-    | "manage_user-detail"
-    | "manage_user"
-    | "multi-menu_first_child"
-    | "multi-menu_second_child_home"
-    | "plugin_barcode"
-    | "plugin_charts_antv"
-    | "plugin_charts_echarts"
-    | "plugin_charts_vchart"
-    | "plugin_copy"
-    | "plugin_editor_markdown"
-    | "plugin_editor_quill"
-    | "plugin_excel"
-    | "plugin_gantt_dhtmlx"
-    | "plugin_gantt_vtable"
-    | "plugin_icon"
-    | "plugin_map"
-    | "plugin_pdf"
-    | "plugin_pinyin"
-    | "plugin_print"
-    | "plugin_swiper"
-    | "plugin_tables_vtable"
-    | "plugin_typeit"
-    | "plugin_video"
     | "student-course_selection"
     | "student-manage"
     | "user-center"
@@ -206,9 +107,6 @@ declare module "@elegant-router/types" {
     CustomRouteKey,
     | "root"
     | "not-found"
-    | "exception_403"
-    | "exception_404"
-    | "exception_500"
   >;
 
   /**
