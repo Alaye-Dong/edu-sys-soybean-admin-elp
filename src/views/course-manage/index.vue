@@ -3,6 +3,7 @@ import { ElButton, ElPopconfirm, ElTag } from 'element-plus';
 import { useTable, useTableOperate } from '@/hooks/common/table';
 import { fetchGetCourseList, fetchCreateCourse, fetchDeleteCourse, fetchUpdateCourse } from '@/service/api/course-manage';
 import { $t } from '@/locales';
+import CourseOperateDrawer from './modules/course-operate-drawer.vue';
 
 defineOptions({ name: 'CourseManage' });
 
@@ -116,7 +117,7 @@ function edit(id: number) {
         <ElPagination v-if="mobilePagination.total" layout="total,prev,pager,next,sizes" v-bind="mobilePagination"
           @current-change="mobilePagination['current-change']" @size-change="mobilePagination['size-change']" />
       </div>
-      <UserOperateDrawer v-model:visible="drawerVisible" :operate-type="operateType" :row-data="editingData"
+      <CourseOperateDrawer v-model:visible="drawerVisible" :operate-type="operateType" :row-data="editingData"
         @submitted="getDataByPage" />
     </ElCard>
   </div>

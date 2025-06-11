@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { useForm, useFormRules } from '@/hooks/common/form';
-import { fetchCreateStudent, fetchUpdateStudent } from '@/service/api';
+import { fetchCreateCourse,fetchUpdateCourse } from '@/service/api';
 import { $t } from '@/locales';
-import { enableStatusOptions, studentGenderOptions } from '@/constants/business';
 
-defineOptions({ name: 'StdentOperateDrawer' });
+defineOptions({
+  name: 'CourseOperateDrawer',
+});
 
 interface Props {
-  /** the type of operation */
   operateType: UI.TableOperateType;
-  /** the edit row data */
-  rowData?: Api.StudentManage.Student | null;
+  rowData?: Api.CourseManage.Course | null;
 }
 
 const props = defineProps<Props>();
@@ -31,34 +30,32 @@ const { defaultRequiredRule } = useFormRules();
 
 const title = computed(() => {
   const titles: Record<UI.TableOperateType, string> = {
-    add: $t('page.manage.user.addUser'),
-    edit: $t('page.manage.user.editUser')
+    add: '新增课程',
+    edit: '编辑课程'
   };
+
   return titles[props.operateType];
-});
+})
 
-type Model = Pick<
-  Api.StudentManage.Student,
-  'studentNumber' | 'name' | 'genderCode' | 'phone' | 'email' | 'className'
->;
+type Model = Api.CourseManage.CourseOperateParams;
 
-const model = ref(createDefaultModel());
+const model = ref(createDefaultModel())
 
 function createDefaultModel(): Model {
   return {
-    studentNumber: '',
+    courseNumber: '',
     name: '',
-    genderCode: undefined,
-    className: '',
-    phone: '',
-    email: '',
-  };
+    teacherName: '',
+    credit: 0,
+    description: ''
+  }
 }
 
-type RuleKey = Extract<keyof Model, 'name' | 'status'>;
+type RuleKey = Extract<keyof Model, 'name' | 'courseNumber'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
   name: defaultRequiredRule,
+  courseNumber: defaultRequiredRule
 };
 
 function handleInitModel() {
@@ -75,13 +72,12 @@ function closeDrawer() {
 
 async function handleSubmit() {
   await validate();
-  // request
   if (props.operateType === 'add') {
-    await fetchCreateStudent(model.value);
+    await fetchCreateCourse(model.value);
     window.$message?.success($t('common.addSuccess'));
   }
   if (props.operateType === 'edit') {
-    await fetchUpdateStudent(model.value);
+    await fetchUpdateCourse(model.value);
     window.$message?.success($t('common.updateSuccess'));
   }
 
@@ -100,25 +96,20 @@ watch(visible, () => {
 <template>
   <ElDrawer v-model="visible" :title="title" :size="360">
     <ElForm ref="formRef" :model="model" :rules="rules" label-position="top">
-      <ElFormItem :label="$t('page.manage.user.userName')" prop="name">
-        <ElInput v-model="model.name" :placeholder="$t('page.manage.user.form.userName')" />
+      <ElFormItem :label="'课程名'" prop="name">
+        <ElInput v-model="model.name" :placeholder="'请输入课程名'" />
       </ElFormItem>
-      <ElFormItem :label="$t('page.manage.user.userGender')" prop="genderCode">
-        <ElRadioGroup v-model="model.genderCode">
-          <ElRadio v-for="item in studentGenderOptions" :key="item.value" :value="item.value" :label="$t(item.label)" />
-        </ElRadioGroup>
+      <ElFormItem :label="'课程编号'" prop="courseNumber">
+        <ElInput v-model="model.courseNumber" :placeholder="'请输入课程编号'" />
       </ElFormItem>
-      <ElFormItem :label="'学号'" prop="studentNumber">
-        <ElInput v-model="model.studentNumber" :placeholder="'请输入学号'" />
+      <ElFormItem :label="'教师名'" prop="className">
+        <ElInput v-model="model.teacherName" :placeholder="'请输入教师名'" />
       </ElFormItem>
-      <ElFormItem :label="'班级'" prop="className">
-        <ElInput v-model="model.className" :placeholder="'请输入班级'" />
+      <ElFormItem :label="'学分'" prop="credit">
+        <ElInput v-model="model.credit" :placeholder="'请输入学分'" />
       </ElFormItem>
-      <ElFormItem :label="$t('page.manage.user.userPhone')" prop="phone">
-        <ElInput v-model="model.phone" :placeholder="$t('page.manage.user.form.userPhone')" />
-      </ElFormItem>
-      <ElFormItem :label="$t('page.manage.user.userEmail')" prop="email">
-        <ElInput v-model="model.email" :placeholder="$t('page.manage.user.form.userEmail')" />
+      <ElFormItem :label="'课程描述'" prop=".description">
+        <ElInput v-model="model.description" :placeholder="'请输入课程描述'" />
       </ElFormItem>
     </ElForm>
     <template #footer>
