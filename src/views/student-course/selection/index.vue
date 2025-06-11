@@ -101,12 +101,11 @@ function edit(id: number) {
 
 async function selectCourse(courseId: number) {
   console.log(courseId);
-  // const studentCourse: Api.StudentCourse.StudentCourse = {
-  //   courseId: courseId,
-  //   studentId: undefined,
-  //   id: undefined
-  // };
-  // await fetchEnrollStudentCourse(studentCourse);
+  const studentCourse: Api.StudentCourse.StudentCourseOperateParams = {
+    courseId: courseId,
+    enrollStatus: 1
+  };
+  await fetchEnrollStudentCourse(studentCourse);
 }
 </script>
 

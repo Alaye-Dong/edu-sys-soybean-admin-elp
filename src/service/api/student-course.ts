@@ -1,6 +1,6 @@
 import { request } from '../request';
 
-export function fetchEnrollStudentCourse(data: Api.StudentCourse.StudentCourse) {
+export function fetchEnrollStudentCourse(data: Api.StudentCourse.StudentCourseOperateParams) {
   return request({
     url: '/student-course',
     method: 'post',
