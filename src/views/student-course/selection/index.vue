@@ -88,13 +88,8 @@ async function handleBatchDelete() {
 async function handleDelete(courseId: number) {
   // eslint-disable-next-line no-console
   console.log(courseId);
-  const studentCourse: Api.StudentCourse.StudentCourse = {
-    courseId: courseId,
-    studentId: undefined,
-    id: undefined
-  };
   // request
-  await fetchUnenrollStudentCourse(studentCourse);
+  await fetchUnenrollStudentCourse(courseId);
 
   onDeleted();
 }
@@ -106,12 +101,12 @@ function edit(id: number) {
 
 async function selectCourse(courseId: number) {
   console.log(courseId);
-  const studentCourse: Api.StudentCourse.StudentCourse = {
-    courseId: courseId,
-    studentId: undefined,
-    id: undefined
-  };
-  await fetchEnrollStudentCourse(studentCourse);
+  // const studentCourse: Api.StudentCourse.StudentCourse = {
+  //   courseId: courseId,
+  //   studentId: undefined,
+  //   id: undefined
+  // };
+  // await fetchEnrollStudentCourse(studentCourse);
 }
 </script>
 

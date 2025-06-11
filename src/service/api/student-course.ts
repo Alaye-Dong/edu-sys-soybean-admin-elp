@@ -8,10 +8,17 @@ export function fetchEnrollStudentCourse(data: Api.StudentCourse.StudentCourse) 
   })
 }
 
-export function fetchUnenrollStudentCourse(data: Api.StudentCourse.StudentCourse) {
+export function fetchUnenrollStudentCourse(courseId: Api.StudentCourse.StudentCourse['courseId']) {
   return request({
-    url: '/student-course',
+    url: `/student-course/${courseId}`,
     method: 'delete',
-    data
+  })
+}
+
+export function fetchGetStudentCourseList(params?: Api.StudentCourse.StudentCourseSearchParams) {
+  return request({
+    url: '/student-course/search',
+    method: 'get',
+    params
   })
 }
