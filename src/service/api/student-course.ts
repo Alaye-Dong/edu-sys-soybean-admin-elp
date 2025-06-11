@@ -7,3 +7,11 @@ export function fetchEnrollStudentCourse(data: Api.StudentCourse.StudentCourse) 
     data
   })
 }
+
+export function fetchUnenrollStudentCourse(data: Api.StudentCourse.StudentCourse) {
+  return request({
+    url: '/student-course',
+    method: 'delete',
+    data
+  })
+}

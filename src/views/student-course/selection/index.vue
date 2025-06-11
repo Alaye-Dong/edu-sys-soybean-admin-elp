@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import { ElButton, ElPopconfirm, ElTag } from 'element-plus';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetCourseList, fetchEnrollStudentCourse, fetchDeleteCourse, fetchUpdateCourse } from '@/service/api';
+import { fetchGetCourseList, fetchEnrollStudentCourse, fetchUnenrollStudentCourse } from '@/service/api';
 import { $t } from '@/locales';
 import CourseOperateDrawer from './modules/course-operate-drawer.vue';
 import CourseSearch from './modules/course-search.vue';
@@ -44,17 +44,17 @@ const {
       align: 'center',
       formatter: row => (
         <div class="flex-center">
-          <ElButton type="primary" plain size="small" onClick={() => edit(row.id)}>
+          {/* <ElButton type="primary" plain size="small" onClick={() => edit(row.id)}>
             {$t('common.edit')}
-          </ElButton>
+          </ElButton> */}
           <ElButton type="success" plain size="small" onClick={() => selectCourse(row.id)}>
             选课
           </ElButton>
-          <ElPopconfirm title={$t('common.confirmDelete')} onConfirm={() => handleDelete(row.id)}>
+          <ElPopconfirm title='确认退选吗' onConfirm={() => handleDelete(row.id)}>
             {{
               reference: () => (
                 <ElButton type="danger" plain size="small">
-                  {$t('common.delete')}
+                  退选
                 </ElButton>
               )
             }}
@@ -85,11 +85,16 @@ async function handleBatchDelete() {
   onBatchDeleted();
 }
 
-async function handleDelete(id: number) {
+async function handleDelete(courseId: number) {
   // eslint-disable-next-line no-console
-  console.log(id);
+  console.log(courseId);
+  const studentCourse: Api.StudentCourse.StudentCourse = {
+    courseId: courseId,
+    studentId: undefined,
+    id: undefined
+  };
   // request
-  await fetchDeleteCourse(id);
+  await fetchUnenrollStudentCourse(studentCourse);
 
   onDeleted();
 }
@@ -101,10 +106,10 @@ function edit(id: number) {
 
 async function selectCourse(courseId: number) {
   console.log(courseId);
-    const studentCourse: Api.StudentCourse.StudentCourse = {
-      courseId: courseId,
-      studentId: undefined,
-      id: undefined
+  const studentCourse: Api.StudentCourse.StudentCourse = {
+    courseId: courseId,
+    studentId: undefined,
+    id: undefined
   };
   await fetchEnrollStudentCourse(studentCourse);
 }
