@@ -639,7 +639,8 @@ export const generatedRoutes: GeneratedRoute[] = [
     component: 'layout.base',
     meta: {
       title: 'student-course',
-      i18nKey: 'route.student-course'
+      i18nKey: 'route.student-course',
+      icon: 'fluent-mdl2:publish-course'
     },
     children: [
       {
@@ -648,7 +649,8 @@ export const generatedRoutes: GeneratedRoute[] = [
         component: 'view.student-course_selection',
         meta: {
           title: 'student-course_selection',
-          i18nKey: 'route.student-course_selection'
+          i18nKey: 'route.student-course_selection',
+          icon: 'icon-park-outline:full-selection'
         }
       }
     ]

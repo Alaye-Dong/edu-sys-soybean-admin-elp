@@ -229,7 +229,9 @@ const local: App.I18n.Schema = {
     plugin_tables: '表格',
     plugin_tables_vtable: 'VTable',
     'student-manage': '学生管理',
-    'course-manage':  '课程管理',
+    'course-manage': '课程管理',
+    'student-course': '选课管理',
+    'student-course_selection': '学生选课'
   },
   page: {
     login: {
