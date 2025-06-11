@@ -4,6 +4,7 @@ import { useTable, useTableOperate } from '@/hooks/common/table';
 import { fetchGetCourseList, fetchCreateCourse, fetchDeleteCourse, fetchUpdateCourse } from '@/service/api/course-manage';
 import { $t } from '@/locales';
 import CourseOperateDrawer from './modules/course-operate-drawer.vue';
+import CourseSearch from './modules/course-search.vue';
 
 defineOptions({ name: 'CourseManage' });
 
@@ -98,7 +99,7 @@ function edit(id: number) {
 
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
-    <!-- <CourseSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" /> -->
+    <CourseSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" />
     <ElCard class="sm:flex-1-hidden card-wrapper" body-class="ht50">
       <template #header>
         <div class="flex items-center justify-between">
