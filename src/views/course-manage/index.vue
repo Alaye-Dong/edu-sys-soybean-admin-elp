@@ -31,7 +31,8 @@ const {
     description: undefined
   },
   columns: () => [
-    { type: 'selection', width: 48 },
+    // TODO 待后端适配批量删除课程
+    // { type: 'selection', width: 48 },
     { prop: 'index', label: $t('common.index'), width: 64 },
     { prop: 'name', label: '课程名', minWidth: 100 },
     { prop: 'courseNumber', label: '课程编号', minWidth: 100 },

@@ -32,7 +32,8 @@ const {
     email: undefined
   },
   columns: () => [
-    { type: 'selection', width: 48 },
+    // TODO 待后端适配批量删除学生
+    // { type: 'selection', width: 48 },
     { prop: 'index', label: $t('common.index'), width: 64 },
     { prop: 'name', label: '姓名', minWidth: 100 },
     { prop: 'studentNumber', label: '学号', minWidth: 100 },
