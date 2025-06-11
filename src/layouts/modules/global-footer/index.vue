@@ -11,7 +11,7 @@ defineOptions({
       target="_blank"
       rel="noopener noreferrer"
     >
-      Copyright MIT © 2021 Soybean
+      Copyright MIT © 2025 AlayeDong
     </a>
   </DarkModeContainer>
 </template>
