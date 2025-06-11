@@ -3,7 +3,6 @@ import { ElButton, ElPopconfirm, ElTag } from 'element-plus';
 import { useTable, useTableOperate } from '@/hooks/common/table';
 import { fetchGetStudentCourseList, fetchEnrollStudentCourse, fetchUnenrollStudentCourse } from '@/service/api';
 import { $t } from '@/locales';
-import CourseOperateDrawer from './modules/course-operate-drawer.vue';
 import CourseSearch from './modules/course-search.vue';
 
 defineOptions({ name: 'CourseManage' });
@@ -39,6 +38,16 @@ const {
     { prop: 'teacherName', label: '教师名', minWidth: 100 },
     { prop: 'credit', label: '学分', width: 100 },
     { prop: 'description', label: '课程描述', minWidth: 100 },
+    {
+      prop: 'enrollStatus',
+      label: '选课状态',
+      align: 'center',
+      formatter: row => (
+        <ElTag type={row.enrollStatus === 1 ? 'success' : 'info'}>
+          {row.enrollStatus === 1 ? '已选' : '未选'}
+        </ElTag>
+      )
+    },
     {
       prop: 'operate',
       label: $t('common.operate'),
