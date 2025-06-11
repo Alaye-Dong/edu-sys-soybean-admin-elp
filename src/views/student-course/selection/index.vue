@@ -42,6 +42,15 @@ const {
       prop: 'enrollStatus',
       label: '选课状态',
       align: 'center',
+      filters: [
+        { text: '全部', value: '' },
+        { text: '已选', value: '1' },
+        { text: '未选', value: '0' }
+      ],
+      filterMethod: (value, row) => {
+        if (!value) return true; // 全部
+        return row.enrollStatus === Number(value);
+      },
       formatter: row => (
         <ElTag type={row.enrollStatus === 1 ? 'success' : 'info'}>
           {row.enrollStatus === 1 ? '已选' : '未选'}
