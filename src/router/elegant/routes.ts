@@ -634,6 +634,26 @@ export const generatedRoutes: GeneratedRoute[] = [
     ]
   },
   {
+    name: 'student-course',
+    path: '/student-course',
+    component: 'layout.base',
+    meta: {
+      title: 'student-course',
+      i18nKey: 'route.student-course'
+    },
+    children: [
+      {
+        name: 'student-course_selection',
+        path: '/student-course/selection',
+        component: 'view.student-course_selection',
+        meta: {
+          title: 'student-course_selection',
+          i18nKey: 'route.student-course_selection'
+        }
+      }
+    ]
+  },
+  {
     name: 'student-manage',
     path: '/student-manage',
     component: 'layout.base$view.student-manage',

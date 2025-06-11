@@ -3,3 +3,4 @@ export * from './route';
 export * from './system-manage';
 export * from './student-manage';
 export * from './course-manage';
+export * from './student-course'

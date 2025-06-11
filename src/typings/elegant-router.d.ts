@@ -78,6 +78,8 @@ declare module "@elegant-router/types" {
     "plugin_tables_vtable": "/plugin/tables/vtable";
     "plugin_typeit": "/plugin/typeit";
     "plugin_video": "/plugin/video";
+    "student-course": "/student-course";
+    "student-course_selection": "/student-course/selection";
     "student-manage": "/student-manage";
     "user-center": "/user-center";
   };
@@ -128,6 +130,7 @@ declare module "@elegant-router/types" {
     | "manage"
     | "multi-menu"
     | "plugin"
+    | "student-course"
     | "student-manage"
     | "user-center"
   >;
@@ -191,6 +194,7 @@ declare module "@elegant-router/types" {
     | "plugin_tables_vtable"
     | "plugin_typeit"
     | "plugin_video"
+    | "student-course_selection"
     | "student-manage"
     | "user-center"
   >;
