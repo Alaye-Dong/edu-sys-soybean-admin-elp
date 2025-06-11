@@ -1,7 +1,7 @@
 <script setup lang="tsx">
 import { ElButton, ElPopconfirm, ElTag } from 'element-plus';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetCourseList, fetchEnrollStudentCourse, fetchUnenrollStudentCourse } from '@/service/api';
+import { fetchGetStudentCourseList, fetchEnrollStudentCourse, fetchUnenrollStudentCourse } from '@/service/api';
 import { $t } from '@/locales';
 import CourseOperateDrawer from './modules/course-operate-drawer.vue';
 import CourseSearch from './modules/course-search.vue';
@@ -19,7 +19,7 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetCourseList,
+  apiFn: fetchGetStudentCourseList,
   showTotal: true,
   apiParams: {
     current: 1,
@@ -28,7 +28,8 @@ const {
     courseNumber: undefined,
     teacherName: undefined,
     credit: undefined,
-    description: undefined
+    description: undefined,
+    enrollStatus: 0
   },
   columns: () => [
     // { type: 'selection', width: 48 },
@@ -47,18 +48,23 @@ const {
           {/* <ElButton type="primary" plain size="small" onClick={() => edit(row.id)}>
             {$t('common.edit')}
           </ElButton> */}
-          <ElButton type="success" plain size="small" onClick={() => selectCourse(row.id)}>
-            选课
-          </ElButton>
-          <ElPopconfirm title='确认退选吗' onConfirm={() => handleDelete(row.id)}>
-            {{
-              reference: () => (
-                <ElButton type="danger" plain size="small">
-                  退选
-                </ElButton>
-              )
-            }}
-          </ElPopconfirm>
+          {row.enrollStatus === 0 && (
+            <ElButton type="success" plain size="small" onClick={() => enrollCourse(row.id)}>
+              选课
+            </ElButton>
+          )}
+
+          {row.enrollStatus === 1 && (
+            <ElPopconfirm title="确认退选吗" onConfirm={() => unenrollCourse(row.id)}>
+              {{
+                reference: () => (
+                  <ElButton type="danger" plain size="small">
+                    退选
+                  </ElButton>
+                )
+              }}
+            </ElPopconfirm>
+          )}
         </div>
       )
     }
@@ -94,18 +100,26 @@ async function handleDelete(courseId: number) {
   onDeleted();
 }
 
+async function unenrollCourse(courseId: number) {
+  console.log(courseId);
+  // request
+  await fetchUnenrollStudentCourse(courseId);
+  await getData();
+}
+
 function edit(id: number) {
   console.log(id);
   handleEdit(id);
 }
 
-async function selectCourse(courseId: number) {
+async function enrollCourse(courseId: number) {
   console.log(courseId);
   const studentCourse: Api.StudentCourse.StudentCourseOperateParams = {
     courseId: courseId,
     enrollStatus: 1
   };
   await fetchEnrollStudentCourse(studentCourse);
+  await getData();
 }
 </script>
 

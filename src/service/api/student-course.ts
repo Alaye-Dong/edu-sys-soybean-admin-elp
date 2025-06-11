@@ -1,5 +1,13 @@
 import { request } from '../request';
 
+export function fetchGetStudentCourseList(params?: Api.StudentCourse.StudentCourseSearchParams) {
+  return request<Api.StudentCourse.StudentCourseList>({
+    url: '/student-course/search',
+    method: 'get',
+    params
+  })
+}
+
 export function fetchEnrollStudentCourse(data: Api.StudentCourse.StudentCourseOperateParams) {
   return request({
     url: '/student-course',
@@ -12,13 +20,5 @@ export function fetchUnenrollStudentCourse(courseId: Api.StudentCourse.StudentCo
   return request({
     url: `/student-course/${courseId}`,
     method: 'delete',
-  })
-}
-
-export function fetchGetStudentCourseList(params?: Api.StudentCourse.StudentCourseSearchParams) {
-  return request({
-    url: '/student-course/search',
-    method: 'get',
-    params
   })
 }
