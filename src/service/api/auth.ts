@@ -46,3 +46,7 @@ export function fetchRefreshToken(refreshToken: string) {
 export function fetchCustomBackendError(code: string, msg: string) {
   return request({ url: '/auth/error', params: { code, msg } });
 }
+
+export function fetchSetUserStudentId(studentId: number) {
+  return request({ url: '/user/setUserStudentId', method: 'post', data: { studentId } });
+}
