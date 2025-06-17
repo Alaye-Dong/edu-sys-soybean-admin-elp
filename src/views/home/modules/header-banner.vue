@@ -40,11 +40,11 @@ const statisticData = computed<StatisticData[]>(() => [
           </div>
         </div>
       </ElCol>
-      <ElCol :md="6" :sm="24">
+      <!-- <ElCol :md="6" :sm="24">
         <ElSpace direction="horizontal" class="w-full justify-end" :size="24">
           <ElStatistic v-for="item in statisticData" :key="item.id" class="whitespace-nowrap" v-bind="item" />
         </ElSpace>
-      </ElCol>
+      </ElCol> -->
     </ElRow>
   </ElCard>
 </template>

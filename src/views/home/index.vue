@@ -16,7 +16,7 @@ const gap = computed(() => (appStore.isMobile ? 0 : 16));
 <template>
   <ElSpace direction="vertical" fill class="full-space pb-0" :size="0">
     <HeaderBanner class="mb-16px" />
-    <CardData class="mb-16px" />
+    <!-- <CardData class="mb-16px" />
     <ElRow :gutter="gap" class="w-full">
       <ElCol :lg="14" :sm="24" class="mb-16px">
         <LineChart />
@@ -32,7 +32,7 @@ const gap = computed(() => (appStore.isMobile ? 0 : 16));
       <ElCol :lg="10" :sm="24" class="mb-16px">
         <CreativityBanner />
       </ElCol>
-    </ElRow>
+    </ElRow> -->
   </ElSpace>
 </template>
 
