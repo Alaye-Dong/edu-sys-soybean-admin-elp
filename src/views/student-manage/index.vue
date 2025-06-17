@@ -84,7 +84,7 @@ const {
           <ElPopconfirm title={$t('common.confirmDelete')} onConfirm={() => handleDelete(row.id)}>
             {{
               reference: () => (
-                <ElButton type="danger" plain size="small">
+                <ElButton type="danger" plain size="small" disabled={row.id === authStore.userInfo.studentId}>
                   {$t('common.delete')}
                 </ElButton>
               )
